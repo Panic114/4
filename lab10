@@ -1,0 +1,69 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    setlocale(LC_ALL, "Ru");
+    string filename;
+    cout << "Введите имя файла: ";
+    cin >> filename;
+
+    ifstream file(filename);
+    if (!file) 
+    {
+        cout << "Файл с именем '" << filename << "' не существует." << endl;
+    }
+    else 
+    {
+        cout << "Содержимое файла '" << filename << "':" << endl;
+        string line;
+        while (getline(file, line)) 
+        {
+            cout << line << endl;
+        }
+        file.close();
+    }
+
+
+
+    string sourceFile, PerepisFile;
+
+ 
+    cout << "Введите имя исходного файла: ";
+    cin >> sourceFile;
+
+    ifstream source(sourceFile);
+    if (!source) 
+    {
+        cout << "Исходный файл с именем '" << sourceFile << "' не существует." << endl;
+        return 1;
+    }
+
+    cout << "Введите имя целевого файла: ";
+    cin >> PerepisFile;
+
+    
+    ofstream Perepis(PerepisFile);
+
+    
+    Perepis << source.rdbuf();
+
+    
+    source.close();
+    Perepis.close();
+
+    cout << "Данные из '" << sourceFile << "' были успешно скопированы в '" << PerepisFile << "'." << endl;
+
+
+
+
+
+
+
+
+
+
+    return 0;
+}
