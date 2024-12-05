@@ -1,0 +1,66 @@
+//lab5
+#include <iostream>
+using namespace std;
+
+
+
+
+
+int main()
+{
+    setlocale(LC_ALL, "Ru");
+    int arr[10];
+    int value;
+
+    cout << "Введите 10 целых чисел:\n";
+    for (int i = 0; i < 10; ++i) 
+    {
+        cin >> arr[i];
+    }
+
+    cout << "Вывод массива:\n";
+    for (int i = 0; i < 10; ++i) 
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    cout << "Введите значение для поиска: ";
+    cin >> value;
+
+    cout << "Позиции элементов, совпадающих со значением " << value << ":\n";
+    bool found = false;
+    for (int k = 0; k < 10; ++k) 
+    {
+        if (arr[k] == value) 
+        {
+            cout << k+1 << " ";
+            found = true;
+        }
+    }
+
+    if (!found) 
+    {
+        cout << "Элемент не найден.\n";
+    }
+    else 
+    {
+        cout << endl;
+    }
+
+
+
+    double ar[10];
+    double sum = 0;
+
+    cout << "Введите 10 вещественных чисел:\n";
+    for (int j = 0; j < 10; ++j)
+    {
+        cin >> arr[j];
+        sum += arr[j];
+    }
+
+    cout << "Сумма элементов массива: " << sum << endl;
+
+
+}
+
