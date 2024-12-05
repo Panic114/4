@@ -1,0 +1,72 @@
+//lab3
+#include <iostream>
+#include <locale.h>
+
+using namespace std;
+
+string is_weekend(int day_number)
+    {
+    if (day_number < 1 || day_number > 7)
+    {
+        return "Такого дня нет.";
+    }
+    else if (day_number == 6 || day_number == 7)
+    {
+        return "Это выходной.";
+    }
+    else
+    {
+        return "Это рабочий день.";
+    }
+}
+
+int main()
+{
+    setlocale(LC_ALL, "RU");
+    int day_number;
+    cout << "Введите номер дня недели (1-7): ";
+    cin >> day_number;
+
+    cout << is_weekend(day_number) << endl;
+    cout << endl << "2" << endl;
+
+    //2
+    int year, month;
+    cout << "Введите год: ";
+    cin >> year;
+    cout << "Введите номер месяца (1-12): ";
+    cin >> month;
+    int x = 0;
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+    {
+        cout << "Год не высокосный";
+    }
+    else
+    {
+        cout << "Год высокосный";
+        x = 1;
+    }
+    cout << endl;
+    switch (month)
+    {
+    case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+    {
+        cout << "31";
+    }
+    case 4: case 6: case 9: case 11:
+    {
+        cout << "30";
+    }
+    case 2:
+    {
+        if (x == 1)
+        {
+            cout << "29";
+        }
+        else
+        {
+            cout << "28";
+        }
+    }
+    }
+}
