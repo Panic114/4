@@ -1,0 +1,92 @@
+//lab4
+#include <iostream>
+using namespace std;
+
+int fibonacci(int n) 
+{
+    if (n <= 0) 
+    {
+        return -1;
+    }
+    else if (n == 1 || n == 2) 
+    {
+        return 1;
+    }
+    else 
+    {
+        int a = 1, b = 1, c;
+        for (int i = 3; i <= n; ++i) 
+        {
+            c = a + b;
+            a = b;
+            b = c;
+        }
+        return b;
+    }
+}
+
+int main() 
+{
+    setlocale(LC_ALL, "Ru");
+    cout << "\t" << "Цельсий" << "\t" << "Фаренгейт" << endl;
+
+    for (int cels = 100; cels >= -50; cels -= 10) 
+    {
+        double fahrenheit = cels * 1.8 + 32;
+        cout << "\t" << cels << "\t" << fahrenheit << endl;
+    }
+
+    cout << endl << endl;
+
+    int n;
+    cout << "Введите номер числа Фибоначчи (n >= 1): ";
+    cin >> n;
+
+    int result = fibonacci(n);
+    if (result == -1) 
+    {
+        cout << "Ошибка: некорректное значение n." << endl;
+    }
+    else 
+    {
+        cout << "Число Фибоначчи под номером " << n << " равно " << result << "." << endl;
+    }
+    cout << endl << endl;
+
+    int grade, sum = 0, count = 0;
+
+    cout << "Введите ваши оценки (введите 0 для завершения ввода): " << endl;
+
+    while (true) 
+    {
+        cin >> grade;
+        if (grade == 0) 
+        {
+            break;
+        }
+        if (grade < 0 || grade > 5) 
+        {
+            cout << "Ошибка: оценка должна быть в диапазоне от 0 до 5." << endl;
+            continue;
+        }
+        sum += grade;
+        count++;
+    }
+
+    if (count > 0) 
+    {
+        double average = static_cast<double>(sum) / count;
+        cout << "Средний балл: " << average << endl;
+    }
+    else 
+    {
+        cout << "Не введено ни одной оценки." << endl;
+    }
+
+
+
+
+
+
+    return 0;
+}
